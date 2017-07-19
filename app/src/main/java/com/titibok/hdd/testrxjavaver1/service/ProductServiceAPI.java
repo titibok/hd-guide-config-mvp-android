@@ -21,6 +21,10 @@ public interface ProductServiceAPI {
     //---get product
     @GET("/{path}.json")
     Call<Product> getProduct(@Path("path") String path);
+
     @GET("/{path}.json")
-    Observable<Map<String,Product>> getProductOb(@Path("path") String path);
+    Call<Map<String, Product>> getListProduct(@Path("path") String path);
+
+    @GET("/{path}.json")
+    Observable<Map<String, Product>> getProductOb(@Path("path") String path);
 }

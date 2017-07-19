@@ -1,7 +1,6 @@
 package com.titibok.hdd.testrxjavaver1.view;
 
 import android.support.annotation.NonNull;
-import android.util.Log;
 import android.widget.TextView;
 
 import com.titibok.hdd.testrxjavaver1.MainApplication;
@@ -15,14 +14,7 @@ import org.androidannotations.annotations.App;
 import org.androidannotations.annotations.EActivity;
 import org.androidannotations.annotations.ViewById;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 import javax.inject.Inject;
-
-import rx.Observable;
-import rx.Observer;
 
 @EActivity(R.layout.activity_main)
 public class MainActivity extends BaseActivity<MainView, MainPresenter> implements MainView {
@@ -30,7 +22,7 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
     protected MainApplication mainApplication;
 
     @Inject
-    protected MainPresenter mainPresenter;
+    protected MainPresenter presenter;
 
     @AfterInject
     void initInject() {
@@ -48,12 +40,12 @@ public class MainActivity extends BaseActivity<MainView, MainPresenter> implemen
 
     @AfterViews
     void init() {
-        mainPresenter.getData("AllProducts/Shirts/AoKhoac");
+        presenter.getData("AllProducts/Shirts/AoKhoac");
     }
 
     @NonNull
     @Override
     public MainPresenter createPresenter() {
-        return mainPresenter;
+        return presenter;
     }
 }

@@ -38,7 +38,6 @@ public class Product implements Serializable {
     private List<String> tag;
 
     //----------------------------------------------------------------------------------------------
-
     public String getDetail() {
         return detail;
     }
@@ -76,7 +75,6 @@ public class Product implements Serializable {
     }
 
     //----------------------------------------------------------------------------------------------
-
     public void setDetail(String detail) {
         this.detail = detail;
     }

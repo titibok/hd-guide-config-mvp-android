@@ -1,7 +1,6 @@
 package com.titibok.hdd.testrxjavaver1.module;
 
-import android.app.Application;
-
+import com.titibok.hdd.testrxjavaver1.MainApplication;
 import com.titibok.hdd.testrxjavaver1.scope.ApplicationScope;
 
 import dagger.Module;
@@ -18,21 +17,21 @@ import static com.titibok.hdd.testrxjavaver1.utils.Constants.ROOT_URL;
 
 @Module
 public class ApplicationModule {
-    private Application application;
+    private MainApplication application;
 
-    public ApplicationModule(Application application) {
+    public ApplicationModule(MainApplication application) {
         this.application = application;
     }
 
     @Provides
     @ApplicationScope
-    Application provideApplication() {
+    MainApplication provideApplication() {
         return application;
     }
 
     @Provides
     @ApplicationScope
-    Retrofit provideRetrofit(){
+    Retrofit provideRetrofit() {
         return new Retrofit.Builder().baseUrl(ROOT_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
