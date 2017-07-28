@@ -47,13 +47,13 @@ public class MainPresenter extends BasePresenter<MainView> {
 //        });
 
         productServiceAPI.getProductOb(path)
-//                .flatMap(stringProductMap -> {
-//                    stringProductMap.remove("-KhIZA8HdofOerJ-ukc7");
-//                    return Observable.just(stringProductMap);
-//                })
+                .flatMap(stringProductMap -> {
+                    stringProductMap.remove("-KhIZA8HdofOerJ-ukc7");
+                    return Observable.just(stringProductMap);
+                })
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(products -> {
+                .subscribe(stringProductMap -> {
                     //Log.e("test", "" + products.size());
                     int i = 0;
                     i = i + 1;
