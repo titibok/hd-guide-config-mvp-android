@@ -1,6 +1,9 @@
 package com.titibok.hdd.testrxjavaver1.module;
 
+import com.titibok.hdd.testrxjavaver1.BuildConfig;
 import com.titibok.hdd.testrxjavaver1.MainApplication;
+import com.titibok.hdd.testrxjavaver1.network.DefaultNetworkProvider;
+import com.titibok.hdd.testrxjavaver1.network.NetworkProvider;
 import com.titibok.hdd.testrxjavaver1.scope.ApplicationScope;
 
 import dagger.Module;
@@ -29,12 +32,27 @@ public class ApplicationModule {
         return application;
     }
 
+//    @Provides
+//    @ApplicationScope
+//    Retrofit provideRetrofit() {
+//        return new Retrofit.Builder().baseUrl(ROOT_URL)
+//                .addConverterFactory(GsonConverterFactory.create())
+//                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+//                .build();
+//    }
+
     @Provides
     @ApplicationScope
-    Retrofit provideRetrofit() {
-        return new Retrofit.Builder().baseUrl(ROOT_URL)
+    Retrofit provideRetrofit2() {
+        return new Retrofit.Builder().baseUrl("http://web.beesightsoft.com/bss-toanlvt/feedme/service/public/en/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .build();
+    }
+
+    @Provides
+    @ApplicationScope
+    NetworkProvider networkProvider(){
+        return new DefaultNetworkProvider(application, BuildConfig.DEBUG);
     }
 }

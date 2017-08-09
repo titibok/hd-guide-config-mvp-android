@@ -1,18 +1,19 @@
 package com.titibok.hdd.testrxjavaver1.view;
 
+import android.util.Log;
+
 import com.titibok.hdd.testrxjavaver1.base.BasePresenter;
 import com.titibok.hdd.testrxjavaver1.model.Product;
+import com.titibok.hdd.testrxjavaver1.network.NetworkProvider;
 import com.titibok.hdd.testrxjavaver1.service.ProductServiceAPI;
+import com.titibok.hdd.testrxjavaver1.service.TestAPI;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import rx.Observable;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
@@ -24,14 +25,17 @@ public class MainPresenter extends BasePresenter<MainView> {
     private ProductServiceAPI productServiceAPI;
     private Call<Map<String, Product>> productCall;
     private Retrofit retrofit;
+    private TestAPI testAPI;
+    private NetworkProvider networkProvider;
 
     @Inject
-    public MainPresenter(Retrofit retrofit) {
+    public MainPresenter(Retrofit retrofit, NetworkProvider networkProvider) {
         this.retrofit = retrofit;
+        this.networkProvider = networkProvider;
     }
 
     public void getData(String path) {
-        productServiceAPI = retrofit.create(ProductServiceAPI.class);
+//        productServiceAPI = retrofit.create(ProductServiceAPI.class);
 
 //        productCall = productServiceAPI.getListProduct(path);
 //        productCall.enqueue(new Callback<Map<String, Product>>() {
@@ -46,18 +50,40 @@ public class MainPresenter extends BasePresenter<MainView> {
 //            }
 //        });
 
-        productServiceAPI.getProductOb(path)
-                .flatMap(stringProductMap -> {
-                    stringProductMap.remove("-KhIZA8HdofOerJ-ukc7");
-                    return Observable.just(stringProductMap);
-                })
+//        productServiceAPI.getProductOb(path)
+//                .flatMap(stringProductMap -> {
+//                    stringProductMap.remove("-KhIZA8HdofOerJ-ukc7");
+//                    return Observable.just(stringProductMap);
+//                })
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(stringProductMap -> {
+//                    //Log.e("test", "" + stringProductMap.size());
+//                    int i = 0;
+//                    i = i + 1;
+//                    //update ui
+//                }, Throwable::printStackTrace);
+
+        testAPI = retrofit.create(TestAPI.class);
+//        testAPI.getCampasses()
+//                .flatMap(stringProductMap -> {
+//                    stringProductMap.remove("-KhIZA8HdofOerJ-ukc7");
+//                    return Observable.just(stringProductMap);
+//
+//                .subscribeOn(Schedulers.io())
+//                .observeOn(AndroidSchedulers.mainThread())
+//                .subscribe(jsonObject -> {
+//                    //Log.e("test", "" + products.size());
+//                    int i = 0;
+//                    i = i + 1;
+//                    //update ui
+//                }, Throwable::printStackTrace);
+
+        networkProvider.transformResponse(testAPI.getCampasses())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(stringProductMap -> {
-                    //Log.e("test", "" + products.size());
-                    int i = 0;
-                    i = i + 1;
-                    //update ui
+                .subscribe(campasses -> {
+                    Log.e("test", "ok");
                 }, Throwable::printStackTrace);
     }
 }
