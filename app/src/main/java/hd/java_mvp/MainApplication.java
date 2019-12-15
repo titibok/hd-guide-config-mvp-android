@@ -1,16 +1,19 @@
-package com.titibok.hdd.testrxjavaver1;
+package hd.java_mvp;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 
-import com.titibok.hdd.testrxjavaver1.module.ApplicationComponent;
-import com.titibok.hdd.testrxjavaver1.module.ApplicationModule;
-import com.titibok.hdd.testrxjavaver1.module.DaggerApplicationComponent;
-
 import org.androidannotations.annotations.EApplication;
+
+import hd.java_mvp.module.ApplicationComponent;
+import hd.java_mvp.module.ApplicationModule;
+import hd.java_mvp.module.DaggerApplicationComponent;
 
 /**
  * Created by user1 on 6/13/2017.
  */
+
+@SuppressLint("Registered")
 @EApplication
 public class MainApplication extends Application {
     private ApplicationComponent applicationComponent;

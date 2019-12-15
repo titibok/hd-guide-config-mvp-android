@@ -1,4 +1,4 @@
-package com.titibok.hdd.testrxjavaver1.utils;
+package hd.java_mvp.utils;
 
 /**
  * Created by user1 on 6/13/2017.

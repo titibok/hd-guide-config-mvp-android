@@ -1,4 +1,4 @@
-package com.titibok.hdd.testrxjavaver1.base;
+package hd.java_mvp.domain.base;
 
 import com.hannesdorfmann.mosby.mvp.MvpView;
 

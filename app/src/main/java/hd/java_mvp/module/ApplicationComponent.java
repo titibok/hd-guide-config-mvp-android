@@ -1,6 +1,6 @@
-package com.titibok.hdd.testrxjavaver1.module;
+package hd.java_mvp.module;
 
-import com.titibok.hdd.testrxjavaver1.scope.ApplicationScope;
+import hd.java_mvp.scope.ApplicationScope;
 
 import dagger.Component;
 import retrofit2.Retrofit;

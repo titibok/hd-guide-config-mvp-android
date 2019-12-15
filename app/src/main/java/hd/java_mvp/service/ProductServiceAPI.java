@@ -1,14 +1,12 @@
-package com.titibok.hdd.testrxjavaver1.service;
-
-import com.titibok.hdd.testrxjavaver1.model.Product;
+package hd.java_mvp.service;
 
 import java.util.Map;
 
+import hd.java_mvp.model.Product;
+import io.reactivex.Observable;
 import retrofit2.Call;
 import retrofit2.http.GET;
 import retrofit2.http.Path;
-import retrofit2.http.Query;
-import rx.Observable;
 
 /**
  * Created by user1 on 6/13/2017.

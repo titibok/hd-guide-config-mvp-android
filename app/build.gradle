@@ -1,14 +1,13 @@
 apply plugin: 'com.android.application'
-apply plugin: 'me.tatarka.retrolambda'
-apply plugin: 'realm-android'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion rootProject.ext.coreVersion.compileSdkVersion
+    buildToolsVersion rootProject.ext.coreVersion.buildToolsVersion
+
     defaultConfig {
-        applicationId "com.titibok.hdd.testrxjavaver1"
-        minSdkVersion 19
-        targetSdkVersion 25
+        applicationId "hd.java_mvp"
+        minSdkVersion 21
+        targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -22,39 +21,47 @@ android {
         }
     }
 
-    //----Retro-Lambda-----------------------------
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
-    } //-------------------------------------------
+    }
 }
 
-def daggerVersion = '2.10'
-def androidAnnotationVersion = '4.2.0'
-def realmVersion = '1.2.2'
-
-//---------------------------
-def rxAndroidVersion = '1.2.0'
-def rxJavaVersion = '1.1.5'
-
 dependencies {
-    testCompile 'junit:junit:4.12'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    //core-compile
-    compile 'com.github.titibok:hd-library-common:0.1.1'
+    def dependency = rootProject.ext.dependency
 
-    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
-    //----------------------------------------------------------------------------------------------
-    annotationProcessor "com.google.dagger:dagger-android-processor:$daggerVersion"
-    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
-    annotationProcessor "org.androidannotations:androidannotations:$androidAnnotationVersion"
+    //retrofit
+    implementation dependency.dpGson
+    implementation dependency.dpOkHttp
+    implementation dependency.dpUrlConnecttion
+    implementation dependency.dpRetrofit2Retrofit
+    implementation dependency.dpRetrofit2AdapterRx
+    implementation dependency.dpRetrofit2Converter
+    //rx2
+    implementation dependency.dpRxAndroid2
+    implementation dependency.dpRxJava2
+    //dagger
+    implementation dependency.dpDagger
+    implementation dependency.dpDaggerAndroid
+    annotationProcessor dependency.dpDaggerProcessor
+    annotationProcessor dependency.dpDaggerAdProcessor
+    //hawk
+    implementation dependency.dpHawk
+    //evenbus
+    implementation dependency.dpEvenbus
 
-    //----------------------------------------------------------------------------------------------
-    //realm-browser
-    compile "com.github.nhancv:nc-android-realm-browser:$realmVersion"
+    //annotation
+    implementation "org.androidannotations:androidannotations-api:4.6.0"
+    annotationProcessor "org.androidannotations:androidannotations:4.6.0"
 
-    //----------------------------------------------------------------------------------------------
-    //rxJava
-    compile "io.reactivex:rxandroid:$rxAndroidVersion"
-    compile "io.reactivex:rxjava:$rxJavaVersion"
+    //mosby MVP
+    implementation "com.hannesdorfmann.mosby:mvp:2.0.1"
+    implementation "com.hannesdorfmann.mosby:viewstate:2.0.1"
 }

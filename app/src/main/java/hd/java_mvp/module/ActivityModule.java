@@ -1,6 +1,6 @@
-package com.titibok.hdd.testrxjavaver1.module;
+package hd.java_mvp.module;
 
-import com.titibok.hdd.testrxjavaver1.base.BaseActivity;
+import hd.java_mvp.domain.base.BaseActivity;
 
 import dagger.Module;
 import dagger.Provides;

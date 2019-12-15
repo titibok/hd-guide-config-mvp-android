@@ -1,4 +1,4 @@
-package com.titibok.hdd.testrxjavaver1.model;
+package hd.java_mvp.model;
 
 import com.google.gson.annotations.SerializedName;
 

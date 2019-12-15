@@ -1,9 +1,9 @@
-package com.titibok.hdd.testrxjavaver1.view;
+package hd.java_mvp.domain.main;
 
-import com.titibok.hdd.testrxjavaver1.base.BaseActivity;
-import com.titibok.hdd.testrxjavaver1.module.ActivityModule;
-import com.titibok.hdd.testrxjavaver1.module.ApplicationComponent;
-import com.titibok.hdd.testrxjavaver1.scope.ActivityScope;
+import hd.java_mvp.module.ActivityModule;
+import hd.java_mvp.module.ApplicationComponent;
+import hd.java_mvp.domain.base.BaseActivity;
+import hd.java_mvp.scope.ActivityScope;
 
 import dagger.Component;
 

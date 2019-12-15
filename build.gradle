@@ -1,18 +1,53 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
 
 buildscript {
+    ext {
+        coreVersion = [
+                buildGradle      : "3.4.1",
+                compileSdkVersion: 29,
+                buildToolsVersion: "29.0.2",
+                minSdkVersion    : 21,
+                targetSdkVersion : 29,
+
+                gson             : "2.8.2",
+                okhttp           : "3.10.0",
+                urlConnection    : "2.7.5",
+                retrofit         : "2.6.1",
+                rxAndroid2       : "2.1.1",
+                rxJava2          : "2.2.8",
+                dagger           : "2.16",
+                daggerCompiler   : "2.16",
+                jsr250Api        : "1.0",
+                hawk             : "1.23",
+                eventbus         : "3.1.1"
+        ]
+
+        dependency = [
+                dpGson              : "com.google.code.gson:gson:${coreVersion.gson}",
+                dpOkHttp            : "com.squareup.okhttp3:okhttp:${coreVersion.okhttp}",
+                dpUrlConnecttion    : "com.squareup.okhttp:okhttp-urlconnection:${coreVersion.urlConnection}",
+                dpRetrofit2Retrofit : "com.squareup.retrofit2:retrofit:${coreVersion.retrofit}",
+                dpRetrofit2AdapterRx: "com.squareup.retrofit2:adapter-rxjava2:${coreVersion.retrofit}",
+                dpRetrofit2Converter: "com.squareup.retrofit2:converter-gson:${coreVersion.retrofit}",
+                dpRxAndroid2        : "io.reactivex.rxjava2:rxandroid:${coreVersion.rxAndroid2}",
+                dpRxJava2           : "io.reactivex.rxjava2:rxjava:${coreVersion.rxJava2}",
+                dpDagger            : "com.google.dagger:dagger:${coreVersion.dagger}",
+                dpDaggerAndroid     : "com.google.dagger:dagger-android:${coreVersion.dagger}",
+                dpDaggerProcessor   : "com.google.dagger:dagger-compiler:${coreVersion.daggerCompiler}",
+                dpDaggerAdProcessor : "com.google.dagger:dagger-android-processor:${coreVersion.daggerCompiler}",
+                dpHawk              : "com.github.orhanobut:hawk:${coreVersion.hawk}",
+                dpEvenbus           : "org.greenrobot:eventbus:${coreVersion.eventbus}"
+        ]
+    }
+
     repositories {
         jcenter()
         mavenCentral()
+        google()
     }
+
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.3.2'
-
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'  //dagger
-
-        classpath 'me.tatarka:gradle-retrolambda:3.2.3'             //retro-lambda
-
-        classpath "io.realm:realm-gradle-plugin:3.3.1"              //realm
+        classpath "com.android.tools.build:gradle:${coreVersion.buildGradle}"
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -20,8 +55,12 @@ buildscript {
 
 allprojects {
     repositories {
+        mavenCentral()
+        google()
         jcenter()
-        maven { url 'https://jitpack.io' }
+        maven { url "https://jitpack.io" }
+        maven { url 'https://maven.google.com' }
+        maven { url 'https://maven.fabric.io/public' }
     }
 }
 

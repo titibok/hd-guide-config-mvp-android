@@ -1,4 +1,4 @@
-package com.titibok.hdd.testrxjavaver1.scope;
+package hd.java_mvp.scope;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
@@ -11,5 +11,5 @@ import javax.inject.Scope;
 
 @Scope
 @Retention(RetentionPolicy.RUNTIME)
-public @interface ActivityScope {
+public @interface ApplicationScope {
 }

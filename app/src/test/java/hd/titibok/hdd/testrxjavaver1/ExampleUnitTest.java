@@ -1,4 +1,4 @@
-package com.titibok.hdd.testrxjavaver1;
+package hd.titibok.hdd.testrxjavaver1;
 
 import org.junit.Test;
 

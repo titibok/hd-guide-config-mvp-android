@@ -1,20 +1,20 @@
-package com.titibok.hdd.testrxjavaver1.view;
+package hd.java_mvp.domain.main;
 
-import com.titibok.hdd.testrxjavaver1.base.BasePresenter;
-import com.titibok.hdd.testrxjavaver1.model.Product;
-import com.titibok.hdd.testrxjavaver1.service.ProductServiceAPI;
+import android.annotation.SuppressLint;
+
+import hd.java_mvp.service.ProductServiceAPI;
+import hd.java_mvp.domain.base.BasePresenter;
+import hd.java_mvp.model.Product;
 
 import java.util.Map;
 
 import javax.inject.Inject;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.schedulers.Schedulers;
 import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
 import retrofit2.Retrofit;
-import rx.Observable;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by user1 on 6/13/2017.
@@ -30,6 +30,7 @@ public class MainPresenter extends BasePresenter<MainView> {
         this.retrofit = retrofit;
     }
 
+    @SuppressLint("CheckResult")
     public void getData(String path) {
         productServiceAPI = retrofit.create(ProductServiceAPI.class);
 
